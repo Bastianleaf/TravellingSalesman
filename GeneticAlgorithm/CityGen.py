@@ -9,5 +9,10 @@ class CityGen:
 		
 	# retorna la distancia a otra ciudad
 	def evaluate_distance(self, city):
+		"""
+		Evalua la distancia que hay entre si misma y otra ciudad
+		:param city: el indice de la segunda ciudad
+		:return: la distancia entre ambas ciudad
+		"""
 		return self.distance[city.value]
 
