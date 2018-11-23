@@ -30,7 +30,6 @@ class CityChromosome:
 		"""
 		Toma dos indices al azar e intercambia las ciudades de esos indices
 		"""
-		print(self.mutation_rate)
 		if random.uniform(0, 1) < self.mutation_rate:
 			
 			lenght_cities = len(self.cities)

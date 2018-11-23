@@ -18,6 +18,9 @@ class CityGenTest(unittest.TestCase):
 		self.city_3 = CityGen(3, city_3_dict)
 	
 	def test_evaluate_distance(self):
+		"""
+		Evalua si las disancias entre ciudades son correctas
+		"""
 		self.assertEqual(self.city_0.evaluate_distance(self.city_0), 0)
 		self.assertEqual(self.city_0.evaluate_distance(self.city_1), 10)
 		self.assertEqual(self.city_0.evaluate_distance(self.city_2), 20)
