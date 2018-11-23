@@ -5,6 +5,10 @@ from time import time
 class CityPopulation:
 
 	def __init__(self, population):
+		"""
+		
+		:param population:
+		"""
 		self.population = population
 		self.__generation = 1
 		self.size = len(self.population)
@@ -83,11 +87,7 @@ class CityPopulation:
 			new_pool.append(pool[i].reproduction(pool[i + 1]))
 		self.population = new_pool
 		
-
 	def evolution(self):
 		selection = self.selection()
 		self.reproduction(selection)
 		self.generation += 1
-		
-		
-		

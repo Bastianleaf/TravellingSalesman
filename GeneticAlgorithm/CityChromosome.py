@@ -4,6 +4,10 @@ import random
 class CityChromosome:
 	
 	def __init__(self, cities):
+		"""
+		Crea un cromosoma de ciudades gen
+		:param cities: arreglo de CityGen
+		"""
 		self.cities = cities
 		self.score = self.evaluate_fitness()
 		self.mutation_rate = 0.1
@@ -33,8 +37,8 @@ class CityChromosome:
 		if random.uniform(0, 1) < self.mutation_rate:
 			
 			lenght_cities = len(self.cities)
-			index_a = random.randint(0, lenght_cities)
-			index_b = random.randint(0, lenght_cities)
+			index_a = random.randint(0, lenght_cities - 1)
+			index_b = random.randint(0, lenght_cities - 1)
 			while index_b == index_a:
 				index_b = random.randint(0, lenght_cities) # aseguramos que sean distintos
 			city_to_change = self.cities[index_a]

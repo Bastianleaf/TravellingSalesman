@@ -27,7 +27,7 @@ class CityPopulationTest(unittest.TestCase):
 		# poblacion genetica
 		self.population = CityPopulation([self.chrom_0, self.chrom_1, self.chrom_2, self.chrom_3])
 		self.equal_population = CityPopulation([self.chrom_0, self.chrom_0, self.chrom_0, self.chrom_0])
-
+		self.population_test = CityPopulation([self.chrom_0, self.chrom_1, self.chrom_2, self.chrom_3])
 	def test_fitness_evaluation(self):
 		"""
 		Prueba se la evaluacion funciona correctamente de dos formas:
@@ -64,6 +64,19 @@ class CityPopulationTest(unittest.TestCase):
 		selection = self.population.selection()
 		self.population.reproduction(selection)
 		self.assertEqual(len(selection) / 2, self.population.size)
+		
+	def test_evolution(self):
+		"""
+		Prueba el funcionaiento correcto de evolution:
+			-Prueba que la poblacion nueva sea distinta
+			-Prueba que haya aumentado la generacion
+		"""
+		chromosomes = self.population_test.population
+		self.population_test.evolution()
+		self.assertNotEqual(self.population_test.population, chromosomes)
+		self.assertEqual(self.population_test.generation, 2)
+		
+		
 		
 if __name__ == '__main__':
 	unittest.main()

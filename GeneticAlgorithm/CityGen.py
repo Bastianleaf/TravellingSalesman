@@ -1,9 +1,11 @@
-import random
-
-
 class CityGen:
 	
 	def __init__(self, value, city_dicts):
+		"""
+		Crea una ciudad gen
+		:param value: indice de la ciudad
+		:param city_dicts: diccionario con indices de ciudades y respectivas distancias
+		"""
 		self.value = value
 		self.distance = city_dicts
 		
