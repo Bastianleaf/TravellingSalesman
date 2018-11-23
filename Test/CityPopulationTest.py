@@ -32,12 +32,12 @@ class CityPopulationTest(unittest.TestCase):
 		"""
 		Prueba se la evaluacion funciona correctamente de dos formas:
 			-Verifica que aumente el contador de generacion homogenea cuando una generacion es identica
-			-Verifica que al tercer ciclo de generaciones homogeneas lo considere como optimo
+			-Verifica que al ciclo 100 de generaciones homogeneas lo considere como optimo
 		"""
 		self.equal_population.evaluate_fitness()
 		self.assertEqual(self.equal_population.homogeneous_counter, 1)
-		self.equal_population.evaluate_fitness()
-		self.equal_population.evaluate_fitness()
+		for i in range(100):
+			self.equal_population.evaluate_fitness()
 		self.assertTrue(self.equal_population.optimal)
 
 	def test_tournament_selection(self):

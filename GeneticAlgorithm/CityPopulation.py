@@ -14,6 +14,8 @@ class CityPopulation:
 		self.size = len(self.population)
 		self.homogeneous_counter = 0
 		self.optimal = False
+		self.equal_count = True
+		
 	
 	@property
 	def generation(self):
@@ -37,18 +39,18 @@ class CityPopulation:
 	def evaluate_fitness(self):
 		"""
 		Metodo que compara el puntaje asociado a los caminos de las ciudades,
-		si los puntajes son iguales para todas las configuraciones durante 3 generaciones
+		si los puntajes son iguales para todas las configuraciones durante 100 generaciones
 		se considera optimo
 		:return: chromosoma con la configuracion optima
 		"""
 		comparator = self.population[0].score
-		equal_count = True
+		self.equal_count = True
 		for chromosome in self.population:
 			if chromosome.score != comparator:
-				equal_count = False
-		if equal_count:
+				self.equal_count = False
+		if self.equal_count:
 			self.homogeneous_counter += 1
-		if self.homogeneous_counter == 3:
+		if self.homogeneous_counter == 100:
 			self.optimal = True
 			
 	def tournament_selection(self, k):
@@ -88,6 +90,16 @@ class CityPopulation:
 		self.population = new_pool
 		
 	def evolution(self):
-		selection = self.selection()
-		self.reproduction(selection)
-		self.generation += 1
+		"""
+		Ejecuta el proceso evolutivo de la poblacion:
+			-Se evalua el fitness
+			-Si es que no es el optimo se realiza la seleccion, reproduccion y
+			se aumenta el contador de generacion
+		"""
+		# print("Generación: " + str(self.generation))
+		self.evaluate_fitness()
+		if not self.optimal:
+			selection = self.selection()
+			self.reproduction(selection)
+			self.generation += 1
+

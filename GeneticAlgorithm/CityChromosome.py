@@ -36,11 +36,11 @@ class CityChromosome:
 		"""
 		if random.uniform(0, 1) < self.mutation_rate:
 			
-			lenght_cities = len(self.cities)
-			index_a = random.randint(0, lenght_cities - 1)
-			index_b = random.randint(0, lenght_cities - 1)
+			length_cities = len(self.cities)
+			index_a = random.randint(0, length_cities - 1)
+			index_b = random.randint(0, length_cities - 1)
 			while index_b == index_a:
-				index_b = random.randint(0, lenght_cities) # aseguramos que sean distintos
+				index_b = random.randint(0, length_cities - 1) # aseguramos que sean distintos
 			city_to_change = self.cities[index_a]
 			self.cities[index_a] = self.cities[index_b]
 			self.cities[index_b] = city_to_change
