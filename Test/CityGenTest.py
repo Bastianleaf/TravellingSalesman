@@ -12,10 +12,10 @@ class CityGenTest(unittest.TestCase):
 		city_3_dict = {0: 30, 1: 8, 2: 12, 3: 0}
 		
 		# ciudades
-		self.city_0 = CityGen(0, city_0_dict)
-		self.city_1 = CityGen(1, city_1_dict)
-		self.city_2 = CityGen(2, city_2_dict)
-		self.city_3 = CityGen(3, city_3_dict)
+		self.city_0 = CityGen(0, "ciudad_0", city_0_dict)
+		self.city_1 = CityGen(1, "ciudad_1", city_1_dict)
+		self.city_2 = CityGen(2, "ciudad_2", city_2_dict)
+		self.city_3 = CityGen(3, "ciudad_3", city_3_dict)
 	
 	def test_evaluate_distance(self):
 		"""

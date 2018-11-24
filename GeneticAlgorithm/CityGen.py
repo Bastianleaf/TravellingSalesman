@@ -1,6 +1,6 @@
 class CityGen:
 	
-	def __init__(self, value, city_dicts):
+	def __init__(self, value, name, city_dicts):
 		"""
 		Crea una ciudad gen
 		:param value: indice de la ciudad
@@ -8,6 +8,7 @@ class CityGen:
 		"""
 		self.value = value
 		self.distance = city_dicts
+		self.name = name
 		
 	# retorna la distancia a otra ciudad
 	def evaluate_distance(self, city):
