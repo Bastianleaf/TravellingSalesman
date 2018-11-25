@@ -22,7 +22,7 @@ class DataManagement:
 				single_set.append(id_counter)  # id
 				single_set.append(row[0])  # nombre
 				rest = row[1:len(row)]  #ciudades y pesos
-				single_set.append(dict(enumerate(map(int, rest))))
+				single_set.append(dict(enumerate(map(float, rest))))
 				data_set.append(single_set)
 				id_counter += 1
 		return data_set

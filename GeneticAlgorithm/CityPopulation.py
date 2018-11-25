@@ -4,10 +4,11 @@ from time import time
 
 class CityPopulation:
 
-	def __init__(self, population):
+	def __init__(self, population, generation_limit):
 		"""
-		
-		:param population:
+		Constructor que crea una poblacion de cromosomas de ciudad
+		:param generation_limit: limite de generaciones identicas para detener evolucion
+		:param population: poblacion de cromosomas
 		"""
 		self.population = population
 		self.__generation = 1
@@ -15,7 +16,7 @@ class CityPopulation:
 		self.homogeneous_counter = 0
 		self.optimal = False
 		self.equal_count = True
-		
+		self.generation_limit = generation_limit
 	
 	@property
 	def generation(self):
@@ -50,7 +51,7 @@ class CityPopulation:
 				self.equal_count = False
 		if self.equal_count:
 			self.homogeneous_counter += 1
-		if self.homogeneous_counter == 100:
+		if self.homogeneous_counter == self.generation_limit:
 			self.optimal = True
 			
 	def tournament_selection(self, k):

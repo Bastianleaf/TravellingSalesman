@@ -1,17 +1,20 @@
 from Main.Tools import *
 
 #  data TODO: importar desde la carpeta data
-city_0_dict = {0: 0, 1: 10, 2: 20, 3: 30}
-city_1_dict = {0: 10, 1: 0, 2: 12, 3: 8}
-city_2_dict = {0: 20, 1: 12, 2: 0, 3: 12}
-city_3_dict = {0: 30, 1: 8, 2: 12, 3: 0}
-city_0 = CityGen(0, "ciudad_0", city_0_dict)
-city_1 = CityGen(1, "ciudad_1", city_1_dict)
-city_2 = CityGen(2, "ciudad_2", city_2_dict)
-city_3 = CityGen(3, "ciudad_3", city_3_dict)
-cities = [city_0, city_1, city_2, city_3]
+
+#path = "../Data/region_metropolitana"
+path = "../Data/ciudades_europa"
+
+data_set = DataManagement(path)
+#print(data_set.data_set)
+cities = list()
+for city in data_set.data_set:
+	city_gen = CityGen(city[0], city[1], city[2])
+	cities.append(city_gen)
+	
 # generate random
-N = 8
+N = 20
+G = 100
 Population = generate_random_route(N, cities)
 # print(list(map(lambda x: x.cities, Population.population)))
 while not Population.optimal:
@@ -24,4 +27,4 @@ road = list(map(lambda x: x.value, optimal.cities))
 print("Camino optimo: " + str(road))
 cities = list(map(lambda x: x.name, optimal.cities))
 print("Ciudades: " + str(cities))
-print("Peso de camino optimo: " + str(optimal.score))
+print("Peso de camino optimo: " + str(round(optimal.score, 2)) + " km")

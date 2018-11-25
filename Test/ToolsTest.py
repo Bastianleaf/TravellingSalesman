@@ -11,15 +11,15 @@ class ToolTest(unittest.TestCase):
 		city_3_dict = {0: 30, 1: 8, 2: 12, 3: 0}
 		
 		# ciudades
-		city_0 = CityGen(0, city_0_dict)
-		city_1 = CityGen(1, city_1_dict)
-		city_2 = CityGen(2, city_2_dict)
-		city_3 = CityGen(3, city_3_dict)
+		city_0 = CityGen(0, "ciudad_0", city_0_dict)
+		city_1 = CityGen(1, "ciudad_1", city_1_dict)
+		city_2 = CityGen(2, "ciudad_2", city_2_dict)
+		city_3 = CityGen(3, "ciudad_3", city_3_dict)
 		
 		self.cities = [city_0, city_1, city_2, city_3]
 		
 	def test_generate_random_route(self):
-		population = generate_random_route(8, self.cities)
+		population = generate_random_route(8, self.cities, 100)
 		self.assertIsInstance(population, CityPopulation)
 		self.assertIsInstance(population.population[0], CityChromosome)
 		self.assertEqual(len(population.population), 8)

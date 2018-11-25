@@ -25,9 +25,9 @@ class CityPopulationTest(unittest.TestCase):
 		self.chrom_3 = CityChromosome([city_1, city_3, city_2, city_0])  # distancia 40
 		
 		# poblacion genetica
-		self.population = CityPopulation([self.chrom_0, self.chrom_1, self.chrom_2, self.chrom_3])
-		self.equal_population = CityPopulation([self.chrom_0, self.chrom_0, self.chrom_0, self.chrom_0])
-		self.population_test = CityPopulation([self.chrom_0, self.chrom_1, self.chrom_2, self.chrom_3])
+		self.population = CityPopulation([self.chrom_0, self.chrom_1, self.chrom_2, self.chrom_3], 100)
+		self.equal_population = CityPopulation([self.chrom_0, self.chrom_0, self.chrom_0, self.chrom_0], 100)
+		self.population_test = CityPopulation([self.chrom_0, self.chrom_1, self.chrom_2, self.chrom_3], 100)
 	def test_fitness_evaluation(self):
 		"""
 		Prueba se la evaluacion funciona correctamente de dos formas:
