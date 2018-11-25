@@ -42,7 +42,6 @@ class CityPopulation:
 		Metodo que compara el puntaje asociado a los caminos de las ciudades,
 		si los puntajes son iguales para todas las configuraciones durante 100 generaciones
 		se considera optimo
-		:return: chromosoma con la configuracion optima
 		"""
 		comparator = self.population[0].score
 		self.equal_count = True
@@ -51,6 +50,8 @@ class CityPopulation:
 				self.equal_count = False
 		if self.equal_count:
 			self.homogeneous_counter += 1
+		else:
+			self.homogeneous_counter = 0
 		if self.homogeneous_counter == self.generation_limit:
 			self.optimal = True
 			
@@ -70,13 +71,20 @@ class CityPopulation:
 	
 	def selection(self):
 		"""
-		Selecciona un grupo de cromosomas del doble de tamaño que la poblacion.
-		Utilza la seleccion de torneo.
-		:return:
+		Selecciona el 25% de la poblacion.
+		Utilzia la seleccion de torneo.
+		:return: retorna una cantidad igual al doble del tamaño de la generacion basado en el 25%
 		"""
 		best = []
-		for i in range(2 * self.size):
+		for i in range(int(self.size / 4)):
 			best.append(self.tournament_selection(self.size))
+		best = best * 8
+		if len(best) < self.size * 2:
+			while len(best) < self.size * 2:
+				best.append(best[random.randint(0, len(best) - 1)])
+		elif len(best) > self.size * 2:
+			while len(best) > self.size * 2:
+				best.pop(0)
 		return best
 	
 	def reproduction(self, pool):

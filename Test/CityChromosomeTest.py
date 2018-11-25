@@ -19,19 +19,19 @@ class CityGenTest(unittest.TestCase):
 		city_3 = CityGen(3, "ciudad_3", city_3_dict)
 		
 		# cromosomas
-		self.chrom_0 = CityChromosome([city_0, city_1, city_2, city_3])  #distancia 34, a reproducir
-		self.chrom_1 = CityChromosome([city_2, city_3, city_0, city_1])  #distancia 52, a reproducir
-		self.chrom_2 = CityChromosome([city_2, city_1, city_0, city_3])  #distancia 52, a mutar
-		self.chrom_3 = CityChromosome([city_1, city_3, city_2, city_0])  #distancia 40
+		self.chrom_0 = CityChromosome([city_0, city_1, city_2, city_3, city_0])  #distancia 64, a reproducir
+		self.chrom_1 = CityChromosome([city_0, city_3, city_2, city_1, city_0])  #distancia 52, a reproducir
+		self.chrom_2 = CityChromosome([city_0, city_2, city_3, city_1, city_0])  #distancia 52, a mutar
+		self.chrom_3 = CityChromosome([city_0, city_2, city_1, city_3, city_0])  #distancia 40
 		
 	def test_evaluate_fitness(self):
 		"""
 		Prueba si calcula correctamente el puntaje asociado a cada cromosoma
 		"""
-		self.assertEqual(self.chrom_0.score, 34)
-		self.assertEqual(self.chrom_1.score, 52)
-		self.assertEqual(self.chrom_2.score, 52)
-		self.assertEqual(self.chrom_3.score, 40)
+		self.assertEqual(self.chrom_0.score, 64)
+		self.assertEqual(self.chrom_1.score, 64)
+		self.assertEqual(self.chrom_2.score, 50)
+		self.assertEqual(self.chrom_3.score, 70)
 		
 	def test_mutation(self):
 		"""
@@ -52,7 +52,7 @@ class CityGenTest(unittest.TestCase):
 		self.chrom_child = self.chrom_0.reproduction(self.chrom_1)
 		self.assertEqual(len(self.chrom_0.cities), len(self.chrom_child.cities))
 		child_index_cities = list(map(lambda x: x.value, self.chrom_child.cities))
-		self.assertTrue(len(child_index_cities) == len(set(child_index_cities)))
+		self.assertTrue(len(child_index_cities) - 1 == len(set(child_index_cities)))
 
 	
 if __name__ == '__main__':
