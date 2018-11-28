@@ -12,6 +12,9 @@ class StringGenTest(unittest.TestCase):
 		self.string_c = StringGen(string_c)
 		
 	def test_mutate(self):
+		"""
+		Comprueba que el string sea distinto al mutar
+		"""
 		self.string_a.mutate()
 		self.string_b.mutate()
 		self.assertNotEqual("a", self.string_a.value)

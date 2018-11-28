@@ -1,25 +1,26 @@
 import unittest
-from GeneticAlgorithm.BitGen import BitGen
-from GeneticAlgorithm.BitChromosome import BitChromosome
-from GeneticAlgorithm.BitPopulation import BitPopulation
+from GeneticAlgorithm.StringGen import StringGen
+from GeneticAlgorithm.StringChromosome import StringChromosome
+from GeneticAlgorithm.StringPopulation import StringPopulation
 
 
-class BitPopulationTest(unittest.TestCase):
+class StringPopulationTest(unittest.TestCase):
 
 	def setUp(self):
-		bit_a = BitGen("0")
-		bit_b = BitGen("1")
-		self.chromosome_a = BitChromosome([bit_a, bit_b, bit_a, bit_a])  # 0100
-		self.chromosome_b = BitChromosome([bit_b, bit_b, bit_a, bit_a])  # 1100
-		self.chromosome_c = BitChromosome([bit_b, bit_b, bit_a, bit_b])  # 1101
-		self.chromosome_d = BitChromosome([bit_b, bit_a, bit_a, bit_b])  # 1001
-		self.population = BitPopulation([self.chromosome_a, self.chromosome_b, self.chromosome_c, self.chromosome_d], 3,  "1001")
-
+		string_a = "a"
+		string_b = "b"
+		string_c = "c"
+		string_a = StringGen(string_a)
+		string_b = StringGen(string_b)
+		self.chromosome_a = StringChromosome([string_a, string_b, string_a])  # aba
+		self.chromosome_b = StringChromosome([string_a, string_a, string_b])  # aab
+		self.population = StringPopulation([self.chromosome_a, self.chromosome_a, self.chromosome_b, self.chromosome_b], 10, "bab")
+		
 	def test_evaluate_fitness(self):
 		"""
 		Evalua que se encuentre el optimo para el bit dado
 		"""
-		test = BitPopulation([self.chromosome_a, self.chromosome_a, self.chromosome_a, self.chromosome_a], 1, "0100")
+		test = StringPopulation([self.chromosome_a, self.chromosome_a, self.chromosome_a, self.chromosome_a], 1, "aaaa")
 		test.evaluate_fitness()
 		self.assertEqual(test.optimal, True)
 		self.population.evaluate_fitness()
@@ -31,7 +32,7 @@ class BitPopulationTest(unittest.TestCase):
 		"""
 		k = 5
 		best = self.population.tournament_selection(k)
-		self.assertIsInstance(best, BitChromosome)
+		self.assertIsInstance(best, StringChromosome)
 		
 	def test_selection(self):
 		"""

@@ -10,6 +10,9 @@ class BitGenTest(unittest.TestCase):
 		self.bit_b = BitGen(bit_b)
 		
 	def test_mutate(self):
+		"""
+		Comprueba que la mutacion genere un bit distinto
+		"""
 		self.bit_a.mutate()
 		self.bit_b.mutate()
 		self.assertEqual("1", self.bit_a.value)
