@@ -18,9 +18,9 @@ class StringPopulationTest(unittest.TestCase):
 		
 	def test_evaluate_fitness(self):
 		"""
-		Evalua que se encuentre el optimo para el bit dado
+		Evalua que se encuentre el optimo para la palabra dada
 		"""
-		test = StringPopulation([self.chromosome_a, self.chromosome_a, self.chromosome_a, self.chromosome_a], 1, "aaaa")
+		test = StringPopulation([self.chromosome_a, self.chromosome_a, self.chromosome_a, self.chromosome_a], 1, "aba")
 		test.evaluate_fitness()
 		self.assertEqual(test.optimal, True)
 		self.population.evaluate_fitness()
@@ -28,7 +28,7 @@ class StringPopulationTest(unittest.TestCase):
 		
 	def test_tournament_selection(self):
 		"""
-		Comprueba que se retorne una instancia de BitChromosome con la seleccion de torneo
+		Comprueba que se retorne una instancia de StringChromosome con la seleccion de torneo
 		"""
 		k = 5
 		best = self.population.tournament_selection(k)

@@ -53,7 +53,7 @@ class StringPopulation:
 			self.homogeneous_counter += 1
 		else:
 			self.homogeneous_counter = 0
-		if self.homogeneous_counter == self.generation_limit:
+		if self.population[0].score == len(self.population[0].value):
 			self.optimal = True
 	
 	def tournament_selection(self, k):
@@ -66,7 +66,7 @@ class StringPopulation:
 		best = None
 		for i in range(k):
 			ind = self.population[random.randint(0, len(self.population) - 1)]
-			if (best is None) or ind.score < best.score:
+			if (best is None) or ind.score > best.score:
 				best = ind
 		return best
 	

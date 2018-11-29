@@ -13,8 +13,8 @@ class BitPopulationTest(unittest.TestCase):
 		self.chromosome_b = BitChromosome([bit_b, bit_b, bit_a, bit_a])  # 1100
 		self.chromosome_c = BitChromosome([bit_b, bit_b, bit_a, bit_b])  # 1101
 		self.chromosome_d = BitChromosome([bit_b, bit_a, bit_a, bit_b])  # 1001
-		self.population = BitPopulation([self.chromosome_a, self.chromosome_b, self.chromosome_c, self.chromosome_d], 3,  "1001")
-
+		self.population = BitPopulation([self.chromosome_a, self.chromosome_b, self.chromosome_c, self.chromosome_d], 3, "1001")
+		
 	def test_evaluate_fitness(self):
 		"""
 		Evalua que se encuentre el optimo para el bit dado
@@ -24,7 +24,7 @@ class BitPopulationTest(unittest.TestCase):
 		self.assertEqual(test.optimal, True)
 		self.population.evaluate_fitness()
 		self.assertEqual(self.population.optimal, False)
-		
+
 	def test_tournament_selection(self):
 		"""
 		Comprueba que se retorne una instancia de BitChromosome con la seleccion de torneo
@@ -32,7 +32,7 @@ class BitPopulationTest(unittest.TestCase):
 		k = 5
 		best = self.population.tournament_selection(k)
 		self.assertIsInstance(best, BitChromosome)
-		
+
 	def test_selection(self):
 		"""
 		Comprueba que la seleccion sea del tamaño deseado
@@ -47,7 +47,7 @@ class BitPopulationTest(unittest.TestCase):
 		selection = self.population.selection()
 		self.population.reproduction(selection)
 		self.assertEqual(len(selection) / 2, self.population.size)
-	
+
 	def test_evolution(self):
 		"""
 		Prueba el funcionaiento correcto de evolution:
@@ -58,7 +58,6 @@ class BitPopulationTest(unittest.TestCase):
 		self.population.evolution()
 		self.assertNotEqual(self.population.population, chromosomes)
 		self.assertEqual(self.population.generation, 2)
-
 
 if __name__ == '__main__':
 	unittest.main()

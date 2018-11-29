@@ -16,4 +16,4 @@ class StringGen:
 		"""
 		not_val = self.value
 		while self.value == not_val:
-			self.value = random.choice(string.ascii_letters)
+			self.value = random.choice('abcdefghijklmnopqrstuvwxyz')

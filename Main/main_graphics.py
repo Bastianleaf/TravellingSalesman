@@ -1,7 +1,6 @@
 from Main.Tools import *
 from time import time
 import matplotlib.pyplot as plt
-import numpy as np
 
 
 #Parametros Globales
