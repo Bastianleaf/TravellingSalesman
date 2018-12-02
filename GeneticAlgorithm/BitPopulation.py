@@ -18,6 +18,8 @@ class BitPopulation:
 		self.equal_count = True
 		self.generation_limit = generation_limit
 		self.solution = solution
+		self.best = None
+		self.best_score = 0
 	@property
 	def generation(self):
 		"""
@@ -42,18 +44,24 @@ class BitPopulation:
 		si los puntajes son iguales para todas las configuraciones durante 100 generaciones
 		se considera optimo
 		"""
+		if self.best is None:
+			self.best = self.population[0]
+			self. best_score = self.population[0].score
 		self.population[0].evaluate_fitness(self.solution)
 		comparator = self.population[0].score
 		self.equal_count = True
 		for chromosome in self.population:
 			chromosome.evaluate_fitness(self.solution)
+			if chromosome.score > self.best_score:
+				self.best = list(map(lambda x: x.value, chromosome.value))
+				self.best_score = chromosome.score
 			if chromosome.score != comparator:
 				self.equal_count = False
 		if self.equal_count:
 			self.homogeneous_counter += 1
 		else:
 			self.homogeneous_counter = 0
-		if self.population[0].score == len(self.population[0].value):
+		if self.homogeneous_counter == self.generation_limit:
 			self.optimal = True
 	
 	def tournament_selection(self, k):

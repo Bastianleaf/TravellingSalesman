@@ -48,6 +48,6 @@ def generate_random_string(n, size, generation_limit, solution):
 	for i in range(n):
 		string_array = []
 		for j in range(size):
-			string_array.append(BitGen(random.choice(word)))
-			string_chromosome_array.append(BitChromosome(string_array))
+			string_array.append(StringGen(random.choice(word)))
+			string_chromosome_array.append(StringChromosome(string_array))
 	return BitPopulation(string_chromosome_array, generation_limit, solution)

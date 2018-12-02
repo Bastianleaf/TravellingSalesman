@@ -5,7 +5,7 @@ class StringChromosome:
 	
 	def __init__(self, value):
 		self.value = value
-		self.mutation_rate = 0.1
+		self.mutation_rate = 0.01
 		self.score = 0
 		
 	def evaluate_fitness(self, solution):

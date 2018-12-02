@@ -10,7 +10,7 @@ class CityChromosome:
 		"""
 		self.cities = cities
 		self.score = self.evaluate_fitness()
-		self.mutation_rate = 0.1
+		self.mutation_rate = 0.01
 
 	#
 	def evaluate_fitness(self):
