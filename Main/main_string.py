@@ -4,12 +4,10 @@ import random
 
 # Parametros Globales
 palabra = "cat"
-population_size = 500  # Individuos de poblacion
-generations_number = 15
+population_size = 100  # Individuos de poblacion
+generations_number = 200
 Population = Tools.generate_random_string(population_size, len(palabra), generations_number, palabra)
 
-# ve 300 15
-# Algoritmo Principal
 print("Calculando la palabra...")
 start_time = time()
 while not Population.optimal:
