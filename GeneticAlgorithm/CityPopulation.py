@@ -17,6 +17,9 @@ class CityPopulation:
 		self.optimal = False
 		self.equal_count = True
 		self.generation_limit = generation_limit
+		self.best = None
+		self.best_score = 0
+		self.best_cities = []
 	
 	@property
 	def generation(self):
@@ -43,9 +46,17 @@ class CityPopulation:
 		si los puntajes son iguales para todas las configuraciones durante 100 generaciones
 		se considera optimo
 		"""
+		if self.best is None:
+			self.best = self.population[0]
+			self.best_score = self.population[0].score
+			self.best_cities = list(map(lambda x: x.name, self.population[0].cities))
 		comparator = self.population[0].score
 		self.equal_count = True
 		for chromosome in self.population:
+			if chromosome.score < self.best_score:
+				self.best = list(map(lambda x: x.value, chromosome.cities))
+				self.best_score = chromosome.score
+				self.best_cities = list(map(lambda x: x.name, self.population[0].cities))
 			if chromosome.score != comparator:
 				self.equal_count = False
 		if self.equal_count:
@@ -105,7 +116,6 @@ class CityPopulation:
 			-Si es que no es el optimo se realiza la seleccion, reproduccion y
 			se aumenta el contador de generacion
 		"""
-		# print("Generación: " + str(self.generation))
 		self.evaluate_fitness()
 		if not self.optimal:
 			selection = self.selection()

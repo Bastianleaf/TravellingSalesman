@@ -114,7 +114,6 @@ class BitPopulation:
 			-Si es que no es el optimo se realiza la seleccion, reproduccion y
 			se aumenta el contador de generacion
 		"""
-		# print("Generación: " + str(self.generation))
 		self.evaluate_fitness()
 		if not self.optimal:
 			selection = self.selection()

@@ -4,8 +4,8 @@ from Data import DataManagement
 #Parametros Globales
 dataset_path = "../Data/ciudades_europa"   # 1- "../Data/ciudades_europa 2- "../Data/region_metropolitana 3- "../Data/cities
 origin_name = "Madrid"  #Nombre de la ciudad, depende del dataset
-population_size = 30  #Individuos de poblacion
-generations_number = 20  #Limite de generaciones identicas
+population_size = 100  #Individuos de poblacion
+generations_number = 40  #Limite de generaciones identicas
 
 
 ## Creacion de lista de ciudades con caminos al azar
@@ -24,11 +24,9 @@ elapsed_time = time() - start_time
 
 # Impresion de informacion
 print("Generacion: " + str(Population.generation))
-optimal = Population.population[random.randint(0, Population.size - 1)]
-road = list(map(lambda x: x.value, optimal.cities))
-print("Camino optimo: " + str(road))
-cities = list(map(lambda x: x.name, optimal.cities))
+print("Camino optimo: " + str(Population.best))
+cities = Population.best_cities
 print("Ciudades: " + str(cities))
-print("Peso de camino optimo: " + str(round(optimal.score, 2)) + " km")
+print("Peso de camino optimo: " + str(round(Population.best_score, 2)) + " km")
 print("Tiempo demorado: %.10f segundos." % elapsed_time)
 
